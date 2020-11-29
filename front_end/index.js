@@ -49,6 +49,7 @@ function appendMovieResults(movies) {
             table.appendChild(tr);
         }
     })
+    detailedTable.classList.remove('hidden');
     loader.classList.add('hidden');
     table.querySelector('.fa-sort').addEventListener('click', sortMovies);
 }
@@ -146,9 +147,9 @@ function listFaveMovies() {
         .then(r => {
             r.forEach((mv) => {
                 let tr = document.createElement('tr');
-                tr.innerHTML = '<td style="max-width:15em">' + mv.movie_title + '</td>' +
+                tr.innerHTML = '<td style="max-width:14em">' + mv.movie_title + '</td>' +
                     '<td style="min-width:7em">' + mv.thumbs_up + '</td>' +
-                    '<td style="min-width:7em">' + mv.thumbs_down + '</td>';
+                    '<td style="min-width:11em">' + mv.thumbs_down + '</td>';
                 tr.style.textAlign = 'center';
                 likesTable.appendChild(tr);
             })

@@ -3,12 +3,8 @@ class MoviesController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
-        movies = @movies;
+        movies = Movie.all;
         render json: movies; 
-    end
-
-    def update
-    
     end
 
     def create
@@ -30,14 +26,7 @@ class MoviesController < ApplicationController
         end
         render json: movie
     end
-
-            
-        # elsif movie
-        # movie.update()
-        # if params[:type] == 'thumbs_up'
-        
-        
-        #   render json:'created'
+    
     end
 
 

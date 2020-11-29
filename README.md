@@ -20,6 +20,7 @@ rails -v
 ```
 
 **Back-end**
+
 Clone this repo
 
 ```bash
@@ -49,7 +50,9 @@ rails s
 ```
 
 **Front-end**
+
 Open index.html from root directory
+
 ```
 Open front_end/index.html
 
