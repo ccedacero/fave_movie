@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <title>Fave Movie - Find Your Favorite Movies</title>
+  </head>
+  <body>
+    <header>
+    <h1>Search the The Open Movie Database</h1>
+  </header>
+    <div class="search">
+      <div>
+        <form id="searchQuery">
+          <input
+            name="movieQuery"
+            type="text"
+            placeholder="Enter movie title"
+          />
+          <input type="submit" value="Search" />
+        </form>
+      </div>
+      <div class="loader"></div>
+      <div id="searchResults">
+        <table>
+          <thead>
+            <th>Title</th>
+            <th><i  style="color: blue; font-size: 20px;"class="fas fa-sort"></i>Release Year</th>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="detailed-view">
+        <table id="detailed">
+        <thead>
+          <th>Title</th>
+          <th>Director</th>
+         <th>Release Year</th>
+          <th>Description</th> 
+          <th>Thumbs-down|Thumbs-up</th> 
+        </thead>
+        <tbody></tbody>
+      </table>
+      </div>
+    </div>
+  </body>
+</html>
+      
