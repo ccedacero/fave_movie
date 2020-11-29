@@ -7,10 +7,18 @@ allow you to search the The Open Movie Database for movies you like and save the
 
 ## Installation
 
-Make sure Ruby is installed.  
-`ruby -v `
-Ensure Rails is installed.  
-`rails -v `
+Make sure Ruby is installed.
+
+```
+ruby -v
+```
+
+Ensure Rails is installed.
+
+```
+rails -v
+```
+
 ###Back-end  
 Clone this repo
 
