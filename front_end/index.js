@@ -4,8 +4,12 @@ let currentMovies = null;
 const searchQuery = document.querySelector("form");
 const loader = document.querySelector('.loader');
 const detailedView = document.querySelector("#detailed-view");
+const listFaves = document.querySelector("#reviewed");
+const likesTable = document.querySelector("#likes-view");
+listFaves.addEventListener('click', listFaveMovies);
 let sorted = false;
 table.classList.add('hidden');
+likesTable.classList.add('hidden');
 detailedView.classList.add('hidden');
 loader.classList.add('hidden');
 searchQuery.addEventListener('submit', (e) => {
@@ -13,6 +17,7 @@ searchQuery.addEventListener('submit', (e) => {
     clearTable();
     detailedView.classList.add('hidden');
     table.classList.remove('hidden');
+    likesTable.classList.add('hidden');
     loader.classList.remove('hidden');
     const query = e.target.movieQuery.value.replace(/[" "]/, "+");
     fetchMovies(query)
@@ -131,6 +136,23 @@ function updateDomLikes(data) {
     document.querySelector('#downLikes').innerHTML = `${data.thumbs_down}`;
 }
 
-
+function listFaveMovies() {
+    clearTable()
+    table.classList.add('hidden');
+    detailedTable.classList.add('hidden');
+    likesTable.classList.remove('hidden');
+    fetch(`http://localhost:3000/movies`)
+        .then(r => r.json())
+        .then(r => {
+            r.forEach((mv) => {
+                let tr = document.createElement('tr');
+                tr.innerHTML = '<td style="max-width:15em">' + mv.movie_title + '</td>' +
+                    '<td style="min-width:7em">' + mv.thumbs_up + '</td>' +
+                    '<td style="min-width:7em">' + mv.thumbs_down + '</td>';
+                tr.style.textAlign = 'center';
+                likesTable.appendChild(tr);
+            })
+        })
+}
 
 

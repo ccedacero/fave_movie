@@ -52,9 +52,15 @@ input {
   max-width: 10em;
   height: 2.5em;
 }
-
 input[type="submit"] {
   max-width: 5em;
+  height: 2.5em;
+  background-color: royalblue;
+  color: #ffffff;
+}
+
+#reviewed {
+  max-width: 10em;
   height: 2.5em;
   background-color: royalblue;
   color: #ffffff;
@@ -77,4 +83,8 @@ input[type="submit"] {
   100% {
     transform: rotate(360deg);
   }
+}
+#likes-view {
+  max-width: 55%;
+  margin: 0 auto;
 }
