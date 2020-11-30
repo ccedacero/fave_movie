@@ -9,7 +9,7 @@ header {
   padding-bottom: 3em;
 }
 h1 {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
   max-width: 47rem;
   margin: 0 auto;
   font-weight: 900;
@@ -83,8 +83,4 @@ input[type="submit"] {
   100% {
     transform: rotate(360deg);
   }
-}
-#likes-view {
-  max-width: 55%;
-  margin: 0 auto;
 }

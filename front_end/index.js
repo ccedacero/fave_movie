@@ -1,4 +1,4 @@
-const table = document.querySelector('table');
+const table = document.querySelector('#queryTable');
 const detailedTable = document.querySelector('#detailed');
 let currentMovies = null;
 const searchQuery = document.querySelector("form");
@@ -12,6 +12,7 @@ table.classList.add('hidden');
 likesTable.classList.add('hidden');
 detailedView.classList.add('hidden');
 loader.classList.add('hidden');
+
 searchQuery.addEventListener('submit', (e) => {
     e.preventDefault();
     clearTable();
@@ -140,6 +141,7 @@ function updateDomLikes(data) {
 function listFaveMovies() {
     clearTable()
     table.classList.add('hidden');
+    loader.classList.remove('hidden');
     detailedTable.classList.add('hidden');
     likesTable.classList.remove('hidden');
     fetch(`http://localhost:3000/movies`)
@@ -147,12 +149,13 @@ function listFaveMovies() {
         .then(r => {
             r.forEach((mv) => {
                 let tr = document.createElement('tr');
-                tr.innerHTML = '<td style="max-width:14em">' + mv.movie_title + '</td>' +
-                    '<td style="min-width:7em">' + mv.thumbs_up + '</td>' +
-                    '<td style="min-width:11em">' + mv.thumbs_down + '</td>';
+                tr.innerHTML = '<td>' + mv.movie_title + '</td>' +
+                    '<td>' + mv.thumbs_up + '</td>' +
+                    '<td>' + mv.thumbs_down + '</td>';
                 tr.style.textAlign = 'center';
                 likesTable.appendChild(tr);
             })
+            loader.classList.add('hidden');
         })
 }
 
