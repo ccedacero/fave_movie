@@ -108,7 +108,6 @@ function appendOneMovie(movie) {
     tr.getElementsByClassName('fas fa-thumbs-up')[0].addEventListener('click', persistOpinion);
     detailedTable.appendChild(tr);
     loader.classList.add('hidden');
-    console.log(detailedTable)
 }
 
 
@@ -140,7 +139,6 @@ function persistOpinion(e) {
 }
 
 function updateDomLikes(data) {
-    console.log(data)
     document.querySelector('#upLikes').innerHTML = `${data.thumbs_up}`;
     document.querySelector('#downLikes').innerHTML = `${data.thumbs_down}`;
 }
