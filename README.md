@@ -7,7 +7,11 @@ allow you to search the The Open Movie Database for movies you like and save the
 
 Watch demo [**here**](https://youtu.be/xY4ILK4LgxE).  
 Live version [**here**](https://favemovie.herokuapp.com/).
-
+## Features  
+- Search for movies 
+- Upvote/down vote movies(persists)
+- Sort movies based on release date 
+- See list of all movies that have received votes 
 ## Installation
 
 Make sure Ruby is installed.
