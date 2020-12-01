@@ -69,7 +69,8 @@ function sortMovies() {
 
 function loadMovie(e) {
     loader.classList.remove('hidden');
-    const newMovieTitle = e.target.innerText.replace(/[" "]/, "+");
+
+    const newMovieTitle = e.target.innerText.replace(/[" "]/g, "+");
     const fetchUrl = `https://www.omdbapi.com/?apikey=afcb2055&t=${newMovieTitle}&plot=full`;
     fetch(fetchUrl)
         .then(r => r.json())
@@ -79,17 +80,23 @@ function loadMovie(e) {
 function clearTable() {
     let removeArr = [...table.children].slice(2);
     let removeArr2 = [...detailedTable.children].slice(2);
+    let removeArr3 = [...likesTable.children].slice(2);
     removeArr.forEach(nd => {
         nd.remove();
     })
     removeArr2.forEach(nd => {
         nd.remove();
     })
+    removeArr3.forEach(nd => {
+        nd.remove();
+    })
 }
 function appendOneMovie(movie) {
     document.querySelector("table").classList.add('hidden');
-    document.querySelector("#detailed-view").classList.remove('hidden');
+    likesTable.classList.add('hidden');
     clearTable()
+    document.querySelector("#detailed-view").classList.remove('hidden');
+    document.querySelector("#detailed").classList.remove('hidden');
     let tr = document.createElement('tr');
     tr.innerHTML = '<td>' + movie.Title + '</td>' +
         '<td>' + movie.Director + '</td>' +
@@ -101,6 +108,7 @@ function appendOneMovie(movie) {
     tr.getElementsByClassName('fas fa-thumbs-up')[0].addEventListener('click', persistOpinion);
     detailedTable.appendChild(tr);
     loader.classList.add('hidden');
+    console.log(detailedTable)
 }
 
 
@@ -133,7 +141,6 @@ function persistOpinion(e) {
 
 function updateDomLikes(data) {
     console.log(data)
-    debugger
     document.querySelector('#upLikes').innerHTML = `${data.thumbs_up}`;
     document.querySelector('#downLikes').innerHTML = `${data.thumbs_down}`;
 }
@@ -146,17 +153,41 @@ function listFaveMovies() {
     likesTable.classList.remove('hidden');
     fetch(`http://localhost:3000/movies`)
         .then(r => r.json())
-        .then(r => {
-            r.forEach((mv) => {
-                let tr = document.createElement('tr');
-                tr.innerHTML = '<td>' + mv.movie_title + '</td>' +
-                    '<td>' + mv.thumbs_up + '</td>' +
-                    '<td>' + mv.thumbs_down + '</td>';
-                tr.style.textAlign = 'center';
-                likesTable.appendChild(tr);
-            })
-            loader.classList.add('hidden');
-        })
+        .then(r => appendLikedMovies(r))
+}
+function appendLikedMovies(movies) {
+    if (movies.length === 0) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + "Sorry!😞No results Found. Try Again." + '</td>';
+        tr.style.textAlign = 'center';
+        likesTable.appendChild(tr);
+        loader.classList.add('hidden');
+    }
+    currentMovies = movies;
+    clearTable()
+    movies.forEach((mv) => {
+        let tr = document.createElement('tr');
+        tr.innerHTML = '<td class="link">' + mv.movie_title + '</td>' +
+            '<td>' + mv.thumbs_up + '</td>' +
+            '<td>' + mv.thumbs_down + '</td>';
+        tr.style.textAlign = 'center';
+        tr.getElementsByClassName('link')[0].addEventListener('click', loadMovie);
+        likesTable.appendChild(tr);
+    })
+    loader.classList.add('hidden');
+    likesTable.querySelector('.fa-sort').addEventListener('click', sortLikedMovies);
+}
+
+function sortLikedMovies() {
+    let movies = null;
+    if (!sorted) {
+        movies = currentMovies.sort((a, b) => a.thumbs_up - b.thumbs_up)
+        sorted = true;
+    } else {
+        movies = currentMovies.sort((a, b) => b.thumbs_down - a.thumbs_down)
+        sorted = false;
+    }
+    appendLikedMovies(movies)
 }
 
 

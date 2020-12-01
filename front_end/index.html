@@ -15,8 +15,10 @@
   </head>
   <body>
     <header>
+    <div>
     <h1>Search the The Open Movie Database</h1>
-    <button id="reviewed">See Liked Movies</button>
+    <button id="reviewed">Review Liked Movies</button>
+  </div>
   </header>
     <div class="search">
       <div>
@@ -25,6 +27,7 @@
             name="movieQuery"
             type="text"
             placeholder="Enter movie title"
+            class="reviewed"
           />
           <input type="submit" value="Search" />
         </form>
@@ -34,7 +37,7 @@
         <table id="queryTable">
           <thead>
             <th>Title</th>
-            <th><i  style="color: blue; font-size: 20px;"class="fas fa-sort"></i>Release Year</th>
+            <th><i style="color:#1c89ff; font-size: 25px;"class="fas fa-sort"></i>Release Year</th>
           </thead>
           <tbody></tbody>
         </table>
@@ -53,8 +56,8 @@
         <table id="likes-view">
         <thead>
           <th>Movie title</th> 
-          <th>Thumbs-up</th>
-          <th>Thumbs-down</th> 
+          <th>Thumbs-up<i style="color:#1c89ff; font-size: 25px;"class="fas fa-sort"></i></th>
+          <th></i>Thumbs-down</th> 
         </thead>
         <tbody></tbody>
       </table>

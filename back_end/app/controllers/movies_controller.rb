@@ -19,9 +19,11 @@ class MoviesController < ApplicationController
             end
         elsif movie != nil
           if type == "thumbs_up"
-            movie.update(thumbs_up: movie.thumbs_up +=1)
+            valid_num = movie.thumbs_down > 0 ? movie.thumbs_down -=1 : 0;
+            movie.update(thumbs_up: movie.thumbs_up +=1, thumbs_down: valid_num)
           elsif type == "thumbs_down"
-            movie.update(thumbs_down: movie.thumbs_down+=1)
+            valid_num = movie.thumbs_up > 0 ? movie.thumbs_up -=1 : 0; 
+            movie.update(thumbs_down: movie.thumbs_down+=1, thumbs_up: valid_num)
           end 
         end
         render json: movie

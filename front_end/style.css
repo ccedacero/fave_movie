@@ -4,17 +4,23 @@ body {
   background-color: burlywood;
 }
 header {
-  padding-top: 3em;
-  background: url("./assets//moviebackground.jpeg") center;
-  padding-bottom: 3em;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+      rgba(141, 153, 174, 0.8),
+      rgba(141, 153, 174, 0.5)
+    ),
+    url("./assets//moviebackground.jpeg") no-repeat fixed;
+  background-position: bottom;
 }
 h1 {
-  background-color: rgba(0, 0, 0, 0.2);
+  /* background-color: rgba(0, 0, 0, 0.7); */
   max-width: 47rem;
-  margin: 0 auto;
   font-weight: 900;
   font-size: 2.5em;
-  max-width: auto;
+  margin: 2em;
 }
 table {
   width: 95%;
@@ -53,17 +59,30 @@ input {
   height: 2.5em;
 }
 input[type="submit"] {
-  max-width: 5em;
-  height: 2.5em;
-  background-color: royalblue;
-  color: #ffffff;
+  background: #1c89ff;
+  color: #f3f3f3;
+  min-width: 5em;
 }
 
 #reviewed {
-  max-width: 10em;
-  height: 2.5em;
-  background-color: royalblue;
-  color: #ffffff;
+  display: inline-block;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  letter-spacing: 1px;
+  height: 38px;
+  width: 120px;
+  line-height: 38px;
+  overflow: hidden;
+  background: #4dbecf;
+  border-radius: 3px;
+  box-shadow: 0 15px 30px rgba(black, 0.1);
+  border: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 1em;
+  color:#fff;
 }
 
 .loader {
