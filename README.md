@@ -4,7 +4,9 @@
 
 Welcome to the faveMovie API. This API will
 allow you to search the The Open Movie Database for movies you like and save the ones you like locally by upvoting them.  
-Watch demo [**here**](https://youtu.be/xY4ILK4LgxE).
+
+Watch demo [**here**](https://youtu.be/xY4ILK4LgxE).  
+Live version [**here**](https://favemovie.herokuapp.com/).
 
 ## Installation
 
