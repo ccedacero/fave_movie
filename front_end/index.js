@@ -24,7 +24,7 @@ searchQuery.addEventListener('submit', (e) => {
     fetchMovies(query)
 })
 function fetchMovies(searchQuery) {
-    const fetchUrl = `https://www.omdbapi.com/?s=${searchQuery}&plot=full&apikey=afcb2055`
+    const fetchUrl = `https://www.omdbapi.com/?s=${searchQuery}&plot=full&apikey=keygoeshere`
     fetch(fetchUrl)
         .then(r => r.json())
         .then(r => appendMovieResults(r.Search))
@@ -71,7 +71,7 @@ function loadMovie(e) {
     loader.classList.remove('hidden');
 
     const newMovieTitle = e.target.innerText.replace(/[" "]/g, "+");
-    const fetchUrl = `https://www.omdbapi.com/?apikey=afcb2055&t=${newMovieTitle}&plot=full`;
+    const fetchUrl = `https://www.omdbapi.com/?apikey=keygoeshere&t=${newMovieTitle}&plot=full`;
     fetch(fetchUrl)
         .then(r => r.json())
         .then(r => appendOneMovie(r))
